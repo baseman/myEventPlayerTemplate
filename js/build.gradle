@@ -1,0 +1,44 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+
+    repositories {
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.20'
+        classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.29"
+    }
+}
+
+apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-platform-js'
+
+repositories {
+    //mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js"
+    compile "org.jetbrains.kotlin:kotlin-test-js" // for now only compile configuration is supported
+
+    expectedBy project(":eventPlayer")
+}
+
+//kotlinFrontend {
+//    downloadNodeJsVersion = "latest"
+//
+//    npm {
+//        devDependency("karma")
+//    }
+//
+//    webpackBundle {
+//        bundleName = "main"
+//        contentPath = file('src/main/web')
+//    }
+//}
+
+[compileKotlin2Js, compileTestKotlin2Js]*.configure {
+    kotlinOptions.moduleKind = "commonjs"
+}

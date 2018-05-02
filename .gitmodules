@@ -1,0 +1,3 @@
+[submodule "eventPlayer.kotlin"]
+	path = eventPlayer
+	url = git@github.com:baseman/eventPlayer.kotlin.git

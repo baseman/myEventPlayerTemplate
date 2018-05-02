@@ -1,0 +1,6 @@
+rootProject.name = 'myEventPlayerTermplate'
+
+include ':eventPlayer'
+include ':common'
+include ':jvm'
+include ':js'
